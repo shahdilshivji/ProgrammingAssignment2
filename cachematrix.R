@@ -2,12 +2,15 @@
 
 
 #This function creates a matrix that can cache its inverse
-makeCacheMatrix <- function(x = numeric()) {
+makeCacheMatrix <- function(x = numeric()) 
+{
         m <- NULL
-        set <- function(y) {
+        set <- function(y) 
+        {
                 x <<- y
                 m <<- NULL
         }
+        
         get <- function() x
         setsolve <- function(solve) m <<- solve #assigning the inverse of the matrix
         getsolve <- function() m 
@@ -17,12 +20,15 @@ makeCacheMatrix <- function(x = numeric()) {
 }
 
 #This function computes the inverse of the matrix above, and then caches that inverse.
-cacheSolve <- function(x, ...) {
+cacheSolve <- function(x, ...) 
+{
         m <- x$getsolve()
-        if(!is.null(m)) {
+        if(!is.null(m)) 
+        {
                 message("getting cached data")
                 return(m)
         }
+        
         data <- x$get()
         m <- solve(data, ...)
         x$setsolve(m)
